@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+const NavLink = ({ label, link = '#!' }: { label: string; link?: string }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-20 leading-12 text-center font-semibold text-white">
+      <a href={link}>{label}</a>
     </div>
   );
-}
+};
+
+const Bar = ({ children }: { children?: React.ReactNode }) => {
+  return (
+    <div className="h-12 bg-black-80 flex justify-between">
+      {!!children && children}
+    </div>
+  );
+};
+
+const Header = () => {
+  return (
+    <Bar>
+      <div className="flex flex-1">
+        <NavLink label="Home" link="https://www.google.com" />
+        <NavLink label="About" />
+        <NavLink label="Tags" />
+      </div>
+    </Bar>
+  );
+};
+
+const Footer = () => {
+  return (
+    <Bar>
+      <div>hello</div>
+    </Bar>
+  );
+};
+
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <main className="bg-blue-30 h-screen" />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
